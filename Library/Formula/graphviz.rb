@@ -26,10 +26,10 @@ class Graphviz < Formula
                           "--disable-java",
                           "--disable-ocaml",
                           "--disable-perl",
-                          "--disable-php",
-                          "--disable-python",
+                          "--enable-php",
+                          "--enable-python",
                           "--disable-r",
-                          "--disable-ruby",
+                          "--enable-ruby",
                           "--disable-sharp",
                           "--disable-swig"
     system "make install"
