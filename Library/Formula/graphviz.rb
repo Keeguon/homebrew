@@ -26,22 +26,6 @@ class Graphviz < Formula
 
   def install
     ENV.x11
-<<<<<<< HEAD
-    # Various language bindings fail with 32/64 issues.
-    system "./configure", "--disable-debug", "--disable-dependency-tracking",
-                          "--prefix=#{prefix}",
-                          "--with-qt=no",
-                          "--disable-quartz",
-                          "--disable-java",
-                          "--disable-ocaml",
-                          "--disable-perl",
-                          "--enable-php",
-                          "--enable-python",
-                          "--disable-r",
-                          "--enable-ruby",
-                          "--disable-sharp",
-                          "--disable-swig"
-=======
     args = ["--disable-debug",
             "--disable-dependency-tracking",
             "--prefix=#{prefix}",
@@ -51,7 +35,6 @@ class Graphviz < Formula
     args << "--without-pangocairo" unless ARGV.include? '--with-pangocairo'
 
     system "./configure", *args
->>>>>>> f82133151e291aacc561d6b6383ac2e75a13631a
     system "make install"
 
     # build Graphviz.app
