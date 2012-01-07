@@ -1,9 +1,9 @@
 require 'formula'
 
 class NgxOpenresty < Formula
-  url 'http://agentzh.org/misc/nginx/ngx_openresty-1.0.10.24.tar.gz'
+  url 'http://agentzh.org/misc/nginx/ngx_openresty-1.0.10.39.tar.gz'
   homepage 'http://openresty.org/'
-  md5 '4786216140f921f6e7e6f58421030606'
+  md5 '4ed831a5d3262800a20c61bb24abce44'
 
   depends_on 'pcre'
 
@@ -37,12 +37,17 @@ class NgxOpenresty < Formula
             "--with-sha1=/usr/include/openssl",
             "--with-md5=/usr/include/openssl",
             "--with-mail",
-            "--with-mail_ssl_module"]
+            "--with-mail_ssl_module",
+            "--without-http_lua_module",
+            "--without-lua_cjson",
+            "--without-lua_redis_parser",
+            "--without-lua_rds_parser",
+            "--without-lua51"]
     
     system "./configure", *args
     system "make"
     system "make install"
-    man8.install "build/nginx-1.0.9/objs/nginx.8"
+    man8.install "build/nginx-1.0.10/objs/nginx.8"
     
     (var+'log/ngx_openresty').mkpath
 
@@ -102,8 +107,8 @@ EOPLIST
 end
 
 __END__
---- a/bundle/nginx-1.0.9/auto/lib/pcre/conf
-+++ b/bundle/nginx-1.0.9/auto/lib/pcre/conf
+--- a/bundle/nginx-1.0.10/auto/lib/pcre/conf
++++ b/bundle/nginx-1.0.10/auto/lib/pcre/conf
 @@ -155,6 +155,21 @@ else
              . auto/feature
          fi
@@ -126,8 +131,8 @@ __END__
          if [ $ngx_found = yes ]; then
              CORE_DEPS="$CORE_DEPS $REGEX_DEPS"
              CORE_SRCS="$CORE_SRCS $REGEX_SRCS"
---- a/bundle/nginx-1.0.9/conf/nginx.conf
-+++ b/bundle/nginx-1.0.9/conf/nginx.conf
+--- a/bundle/nginx-1.0.10/conf/nginx.conf
++++ b/bundle/nginx-1.0.10/conf/nginx.conf
 @@ -33,7 +33,7 @@
      #gzip  on;
 
