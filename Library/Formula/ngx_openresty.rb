@@ -1,9 +1,9 @@
 require 'formula'
 
 class NgxOpenresty < Formula
-  url 'http://agentzh.org/misc/nginx/ngx_openresty-1.0.9.10.tar.gz'
+  url 'http://agentzh.org/misc/nginx/ngx_openresty-1.0.10.24.tar.gz'
   homepage 'http://openresty.org/'
-  md5 '0dccb7be2c026dcd84f8d3aa7394fbea'
+  md5 '4786216140f921f6e7e6f58421030606'
 
   depends_on 'pcre'
 
